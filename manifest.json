@@ -2,12 +2,20 @@
   "name": "PageWatch",
   "version": "1.0",
   "description": "Watch for updates",
-  "permissions": ["declarativeContent", "storage"],
+  "options_page": "options.html",
+  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "icons": {
+    "16": "images/icon_16.png",
+    "32": "images/icon_32.png",
+    "48": "images/icon_48.png",
+    "128": "images/icon_128.png"
+  },
   "background": {
     "scripts": ["background.js"],
     "persistent": false
   },
-  "page_action": {
+  "browser_action": {
+    "default_icon": "icon_16.png",
     "default_popup": "popup.html"
   },
   "manifest_version": 2
