@@ -2,8 +2,7 @@
   "name": "PageWatch",
   "version": "1.0",
   "description": "Watch for updates",
-  "options_page": "options.html",
-  "permissions": ["activeTab", "declarativeContent", "storage", "<all_urls>"],
+  "permissions": ["activeTab", "tabs", "declarativeContent", "storage"],
   "icons": {
     "16": "images/icon16.png",
     "32": "images/icon32.png",
@@ -22,15 +21,15 @@
   "commands": {
     "save-session": {
       "suggested_key": {
-        "default": "Alt+Shift+F",
-        "mac": "Alt+Shift+F"
+        "default": "Ctrl+Shift+F",
+        "mac": "Command+Shift+F"
       },
       "description": "Quick Saves Session"
     },
     "load-session": {
       "suggested_key": {
-        "default": "Alt+Shift+G",
-        "mac": "Alt+Shift+G"
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
       },
       "description": "Quick Loads Session"
     }
