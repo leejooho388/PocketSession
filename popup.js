@@ -13,3 +13,21 @@
 //         {code: 'document.body.style.backgroundColor = "' + color + '";'});
 //   });
 // };
+
+
+  // "commands": {
+  //   "save-session": {
+  //     "suggested_key": {
+  //       "default": "Ctrl+Shift+Right",
+  //       "mac": "Command+Shift+Right"
+  //     },
+  //     "description": "Flip tabs forward"
+  //   },
+  //   "load-session": {
+  //     "suggested_key": {
+  //       "default": "Ctrl+Shift+Left",
+  //       "mac": "Command+Shift+Left"
+  //     },
+  //     "description": "Flip tabs backwards"
+  //   }
+  // }
