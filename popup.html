@@ -2,14 +2,64 @@
 <html>
   <head>
     <style>
+      body{
+        margin: 0px;
+        padding: 0px;
+        background-color: rgb(192, 192, 192);
+        width: 250px;
+      }
       button {
         height: 30px;
-        width: 30px;
+        width: 55px;
         outline: none;
+        border: 2px solid rgba(165, 165, 255, 0.548);
+        border-radius: 5px;
+        background-color: rgba(122, 217, 255, 0.247);
+      }
+      ::-webkit-scrollbar { 
+        display: none; 
+      }
+      #listSessions {
+        overflow: scroll; 
+        height: 400px; 
+        width: 200px;
+        box-sizing: border-box;
+        padding: 0px;
+        margin: auto;
+        text-align: center;
+      }
+      h3{
+        text-align: center;
+      }
+      .session{
+        width: 90%;
+        height: 75px;
+        box-shadow: 0px 0px 5px 1px lightslategrey;
+        border-radius: 5px;
+        margin-left: 1px;
+        margin:auto;
+        background-color: white;
+      }
+      input{
+        margin-bottom: 5px;
+        border-radius: 5px;
+        padding: 3px;
       }
     </style>
   </head>
   <body>
-    <h1>This area will soon have functionality for named sessions</h1>
+    <div id="listSessions">
+      <br/>
+      <input type="text" id="inputText" placeholder="New Session Name"/>
+      <button id="newSession">Create</button>
+      <div id="inputResponse"></div>
+      <div id='quicksave' class="session">
+        <h3>Quicksave</h3>
+        <button class="quicksave">Save</button>
+        <button class="quicksave">Load</button>
+        <button class="quicksave">Delete</button>
+      </div>
+    </div>
+    <script src="popup.js"></script>
   </body>
 </html>

@@ -1,9 +1,7 @@
 // Saves options to chrome.storage
 function save_options() {
-  var incognito = document.getElementById('incognito').value;
   var closeExisting = document.getElementById('closeExisting').checked;
   chrome.storage.sync.set({
-    incognito,
     closeExisting
   }, function() {
     // Update status to let user know options were saved.
@@ -18,11 +16,7 @@ function save_options() {
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
 function restore_options() {
-  chrome.storage.sync.get({
-    incognito: 'saved.on',
-    closeExisting: 'saved.on'
-  }, function(items) {
-    document.getElementById('incognito').checked = items.incognito;
+  chrome.storage.sync.get('closeExisting', function(items) {
     document.getElementById('closeExisting').checked = items.closeExisting;
   });
 }
