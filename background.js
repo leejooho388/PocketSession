@@ -8,7 +8,6 @@ chrome.commands.onCommand.addListener(function(command) {
       if(sessionOption.closeExisting){
         chrome.windows.getAll({}, (windows) => {
           for(let i = 0; i < windows.length; i++){
-            console.log(windows[i]);
             chrome.windows.remove(windows[i].id);
           }
         });
@@ -43,22 +42,23 @@ let load = (sessionName) => {
   chrome.storage.sync.get(temp, (session) => {
     //Gets the keys of session.session which is window ids
     let keys = Object.keys(session[sessionName]);
-    console.log(session);
 
     //Loops through to create windows
     for(let i = 0; i < keys.length; i++){
-      chrome.windows.create({
-        url: session[sessionName][keys[i]],
-        focused: false
-      }, (window) => {
-        //Maximizes window here instead of in create, because the function above doesn't work with state
-        chrome.windows.update(window.id, {state: 'maximized'});
-
-        //Marks for unloading so that when they load, the listener can unload them
-        for(let j = 1; j < window.tabs.length; j++){
-          markUnload[window.tabs[j].id] = true;
-        }
-      })
+      if(typeof session[sessionName][keys[i]] !== 'string'){
+        chrome.windows.create({
+          url: session[sessionName][keys[i]],
+          focused: false
+        }, (window) => {
+          //Maximizes window here instead of in create, because the function above doesn't work with state
+          chrome.windows.update(window.id, {state: 'maximized'});
+  
+          //Marks for unloading so that when they load, the listener can unload them
+          for(let j = 1; j < window.tabs.length; j++){
+            markUnload[window.tabs[j].id] = true;
+          }
+        })
+      }
     }
 
   //Helps the tabs to reduce ram usage
