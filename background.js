@@ -2,9 +2,19 @@ let markUnload = {};
 
 chrome.commands.onCommand.addListener(function(command) {
   if(command === "save-session"){
-    save('quickSave');
+    save('quicksave');
   } else if (command === "load-session"){
-    load('quickSave');
+    chrome.storage.sync.get({closeExisting: false}, (sessionOption) => {
+      if(sessionOption.closeExisting){
+        chrome.windows.getAll({}, (windows) => {
+          for(let i = 0; i < windows.length; i++){
+            console.log(windows[i]);
+            chrome.windows.remove(windows[i].id);
+          }
+        });
+      }
+    })
+    load('quicksave');
   }
 });
 
@@ -23,13 +33,12 @@ let save = (sessionName) => {
 
     //saves into storage
     chrome.storage.sync.set(sessionWindows);
-    console.log(sessionWindows);
   })
 }
 
 let load = (sessionName) => {
   let temp = {};
-  temp[sessionName] = 'quickSave';
+  temp[sessionName] = sessionName;
   //Gets quicksave back
   chrome.storage.sync.get(temp, (session) => {
     //Gets the keys of session.session which is window ids
