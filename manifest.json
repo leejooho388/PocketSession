@@ -1,6 +1,6 @@
 {
   "name": "PocketSession",
-  "version": "1.1",
+  "version": "1.11",
   "description": "This extension can save and reload multi-window, multi-tab sessions.",
   "options_ui": {
     "page": "options.html",

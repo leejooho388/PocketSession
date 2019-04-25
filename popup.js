@@ -27,6 +27,15 @@ document.addEventListener('click', (e) => {
         break;
 
       case 'Load':
+        chrome.storage.sync.get({closeExisting: false}, (sessionOption) => {
+          if(sessionOption.closeExisting){
+            chrome.windows.getAll({}, (windows) => {
+              for(let i = 0; i < windows.length; i++){
+                chrome.windows.remove(windows[i].id);
+              }
+            });
+          }
+        })
         load(e.target.className);
         break;
 
