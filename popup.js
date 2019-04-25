@@ -70,6 +70,12 @@ let save = (sessionName) => {
 
     //saves into storage
     chrome.storage.sync.set(sessionWindows);
+
+    var status = document.getElementById('inputResponse');
+    status.textContent = 'Saved!';
+    setTimeout(function() {
+      status.textContent = '';
+    }, 3000);
   })
 }
 
@@ -156,5 +162,9 @@ let removeSession = (inputText) => {
     document.getElementById("listSessions").removeChild(
       document.getElementById(inputText)
     )
+    
+    blockInputs.splice(blockInputs.findIndex( (ele) => {
+      return inputText === ele;
+    }), 1)
   }
 }
